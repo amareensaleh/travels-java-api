@@ -1,0 +1,4 @@
+output:
+  unwrap:
+    types:
+      - io.github.mariazevedo88.travelsjavaapi.dto.response.Response
