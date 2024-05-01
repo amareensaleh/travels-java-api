@@ -1,5 +1,6 @@
 package io.github.mariazevedo88.travelsjavaapi.controller.v1.statistic;
 
+import com.graphqlify.annotation.GraphQLType;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -67,6 +68,7 @@ public class StatisticController {
 	 */
 	@GetMapping
 	@ApiOperation(value = "Route to create statistics in the API")
+	@GraphQLType(name = "createStatistics")
 	public ResponseEntity<Response<StatisticDTO>> create(@RequestHeader(value=TravelsApiUtil.HEADER_TRAVELS_API_VERSION, 
 		defaultValue="${api.version}") String apiVersion, @RequestHeader(value=TravelsApiUtil.HEADER_API_KEY, 
 		defaultValue="${api.key}") String apiKey) {

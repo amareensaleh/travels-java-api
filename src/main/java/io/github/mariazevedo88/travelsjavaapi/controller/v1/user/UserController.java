@@ -1,5 +1,6 @@
 package io.github.mariazevedo88.travelsjavaapi.controller.v1.user;
 
+import com.graphqlify.annotation.GraphQLType;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class UserController {
 	 * 500, 502, 503, 504 - Server Errors: something went wrong on API end (These are rare).
 	 */
 	@PostMapping
+	@GraphQLType(name = "createUser")
 	public ResponseEntity<Response<UserDTO>> create(@RequestHeader(value=TravelsApiUtil.HEADER_TRAVELS_API_VERSION, defaultValue="${api.version}") 
 		String apiVersion, @Valid @RequestBody UserDTO dto, BindingResult result){
 		

@@ -1,5 +1,6 @@
 package io.github.mariazevedo88.travelsjavaapi.controller.v1.account;
 
+import com.graphqlify.annotation.GraphQLType;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -75,6 +76,7 @@ public class AccountController {
 	 * 500, 502, 503, 504 - Server Errors: something went wrong on API end (These are rare).
 	 */
 	@PostMapping
+	@GraphQLType( name = "createAccount")
 	public ResponseEntity<Response<AccountDTO>> create(@RequestHeader(value=TravelsApiUtil.HEADER_TRAVELS_API_VERSION, 
 		defaultValue="${api.version}") String apiVersion, @Valid @RequestBody AccountDTO dto, BindingResult result) {
 		
@@ -176,6 +178,7 @@ public class AccountController {
 	 */
 	@GetMapping(value = "/{id}")
 	@ApiOperation(value = "Route to find a account by your id in the API")
+	@GraphQLType(name = "findAccountById")
 	public ResponseEntity<Response<AccountDTO>> findById(@RequestHeader(value=TravelsApiUtil.HEADER_TRAVELS_API_VERSION, 
 		defaultValue="${api.version}") String apiVersion, @RequestHeader(value=TravelsApiUtil.HEADER_API_KEY, defaultValue="${api.key}") 
 		String apiKey, @PathVariable("id") Long accountId) throws AccountNotFoundException {

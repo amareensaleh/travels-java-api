@@ -1,5 +1,6 @@
 package io.github.mariazevedo88.travelsjavaapi.controller.v1.user;
 
+import com.graphqlify.annotation.GraphQLType;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,7 @@ public class UserAccountController {
 	 * 
 	 */
 	@PostMapping
+	@GraphQLType(name = "createUserAccount")
 	public ResponseEntity<Response<UserAccountDTO>> create(@RequestHeader(value=TravelsApiUtil.HEADER_TRAVELS_API_VERSION, 
 		defaultValue="${api.version}") String apiVersion, @Valid @RequestBody UserAccountDTO dto, BindingResult result) {
 		
