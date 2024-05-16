@@ -1,5 +1,6 @@
 package io.github.mariazevedo88.travelsjavaapi.dto.response;
 
+import com.graphqlify.annotation.GraphQLType;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,6 +24,8 @@ import lombok.Setter;
 public class Response<T> {
 
 	private T data;
+
+	@GraphQLType(ignore = true)
 	private Object errors;
 	
 	/**
