@@ -100,16 +100,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		if (activeProfile.equals("test")) {
-            http.csrf().disable().authorizeRequests().anyRequest().permitAll();
-        } else {
-        	http.csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
-        	.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-        	.antMatchers("/api-travels/v1/auth/**", "/api-travels/v1/users/**", "/configuration/security", "/webjars/**", 
-        			"/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/manage/**")
-    		.permitAll().anyRequest().authenticated();
-    		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
-    		http.headers().cacheControl();
-        }
+//		if (activeProfile.equals("test")) {
+//            http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+//        } else {
+//        	http.csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+//        	.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+//        	.antMatchers("/api-travels/v1/auth/**", "/api-travels/v1/users/**", "/configuration/security", "/webjars/**",
+//        			"/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/manage/**")
+//    		.permitAll().anyRequest().authenticated();
+//    		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+//    		http.headers().cacheControl();
+//        }
+
+		http.csrf().disable()
+			.authorizeRequests()
+			.anyRequest().permitAll() // Allow all requests without authentication
+			.and()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 }
