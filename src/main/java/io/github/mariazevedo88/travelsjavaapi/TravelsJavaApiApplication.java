@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Class that starts the application
@@ -14,7 +16,13 @@ import lombok.extern.log4j.Log4j2;
  * @since 03/04/2020 
  */
 @Log4j2
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+		"io.github.mariazevedo88.travelsjavaapi",
+		"graphqlify.generated.graphql"
+})
+@ServletComponentScan("graphqlify.generated.graphql")
+
+
 public class TravelsJavaApiApplication {
 	
 	public static void main(String[] args) {

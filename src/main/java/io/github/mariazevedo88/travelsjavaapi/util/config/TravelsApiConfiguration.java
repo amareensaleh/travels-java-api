@@ -3,6 +3,8 @@ package io.github.mariazevedo88.travelsjavaapi.util.config;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.graphqlify.definition.convert.spring.web.config.SpringPageRequestMapper;
+import com.graphqlify.extended.pagination.mapper.PageRequestMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.client.LinkDiscoverer;
@@ -49,5 +51,10 @@ public class TravelsApiConfiguration {
 	public void initPartialize(){
 		PartializeConverterManager.getInstance().registerConverter(new LocalDateTimeConverter());
 		PartializeConverterManager.getInstance().registerConverter(new BigDecimalConverter());
+	}
+
+	@Bean
+	public PageRequestMapper pageRequestMapper() {
+		return new SpringPageRequestMapper();
 	}
 }
